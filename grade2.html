@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular sum</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<style type="text/css">
+  .form-control{
+    width: 70%;
+  }
+</style>
+<body>
+<center><div ng-app="gradeapp" ng-init="marks=0" ng-controller="gradectrl">
+<h1>Grade Application</h1>
+<label>Enter Your Mark</label>
+<input type="number" ng-model="marks" class="form-control" width="60%">
+<h3>Your Grade {{grade}} for {{marks}} Marks</h3>
+
+</div>
+</center>
+<script type="text/javascript">
+	var app = angular.module("gradeapp",[]);
+	app.controller("gradectrl", function($scope){
+       $scope.grade = '';
+       $scope.$watch('marks',function(){
+	    if($scope.marks>=80){
+            $scope.grade="A";
+        }
+        else if($scope.marks>=70){
+            $scope.grade="B";
+        }
+        else if($scope.marks>=60){
+            $scope.grade="C";
+        }
+        else{
+            $scope.grade="F";
+        }
+
+       });
+
+       
+
+	});
+
+</script>
+
+</body>
+</html>
